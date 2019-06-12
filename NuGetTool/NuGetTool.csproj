@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <Import Project="..\nuget.props" />
+
+  <PropertyGroup>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>htmlToXml</ToolCommandName>
+    <!-- Use a different package name for installing as a dotnet core global tool,
+         to avoid conflict with the NuGet package for HtmlToXml itself, when used
+         as a library.
+    -->
+    <PackageId>HtmlToXmlNuGetTool</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HtmlToXml\HtmlToXml.csproj" />
+  </ItemGroup>
+
+</Project>
