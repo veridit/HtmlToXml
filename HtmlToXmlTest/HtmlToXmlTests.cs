@@ -322,5 +322,41 @@ namespace HtmlToXml.Test {
               "<table><th>H1</th><td>C1</td><tbody><td>C2</td><th>H2</th></tbody></table>");
       }
 
+
+      [TestMethod, TestCategory("HtmlToXml")]
+      public void NewlinesInValidPlacesDoNotCauseParsingProblems() {
+         var htmlWithUnixNewlinesInsideTag =
+            @"<div>\n" +
+            @"  <div\n    data-teto-field=""a8589787-98c5-45b4-9924-067084833d5b""\n    data-teto-action=""replace"">\n  </div>\n"+
+            @"  <div\n    data-teto-field=""a9f47d88-f218-402c-8519-61ffd0ea30b5""\n    data-teto-field-option=""ccbd9789-004c-4612-8025-98785bf449ce""\n    data-teto-action=""show"">\n    OneOfOption1Name\n  </div>\n"+
+            @"</div>\n";
+         var htmlWithWindowsNewlinesInsideTag =
+            @"<div>\r\n" +
+            @"  <div\r\n    data-teto-field=""a8589787-98c5-45b4-9924-067084833d5b""\r\n    data-teto-action=""replace"">\r\n  </div>\r\n"+
+            @"  <div\r\n    data-teto-field=""a9f47d88-f218-402c-8519-61ffd0ea30b5""\r\n    data-teto-field-option=""ccbd9789-004c-4612-8025-98785bf449ce""\r\n    data-teto-action=""show"">\r\n    OneOfOption1Name\r\n  </div>\r\n"+
+            @"</div>\r\n";
+         var htmlWithUnixNewlinesInsideElement =
+            @"<div>\n" +
+            @"  <div data-teto-field=""a8589787-98c5-45b4-9924-067084833d5b"" data-teto-action=""replace"">\n  </div>\n"+
+            @"  <div data-teto-field=""a9f47d88-f218-402c-8519-61ffd0ea30b5"" data-teto-field-option=""ccbd9789-004c-4612-8025-98785bf449ce"" data-teto-action=""show"">\n    OneOfOption1Name\n  </div>\n"+
+            @"</div>\n";
+         var htmlWithWindowsNewlinesInsideElement =
+            @"<div>\r\n" +
+            @"  <div data-teto-field=""a8589787-98c5-45b4-9924-067084833d5b"" data-teto-action=""replace"">\r\n  </div>\r\n"+
+            @"  <div data-teto-field=""a9f47d88-f218-402c-8519-61ffd0ea30b5"" data-teto-field-option=""ccbd9789-004c-4612-8025-98785bf449ce"" data-teto-action=""show"">\r\n    OneOfOption1Name\r\n  </div>\r\n"+
+            @"</div>\r\n";
+         var compactHtml =
+            @"<div>" +
+            @"<div data-teto-field=""a8589787-98c5-45b4-9924-067084833d5b"" data-teto-action=""replace""></div>"+
+            @"<div data-teto-field=""a9f47d88-f218-402c-8519-61ffd0ea30b5"" data-teto-field-option=""ccbd9789-004c-4612-8025-98785bf449ce"" data-teto-action=""show"">OneOfOption1Name</div>"+
+            @"</div>";
+         Test(compactHtml,compactHtml);
+         Test(htmlWithUnixNewlinesInsideElement,compactHtml);
+         Test(htmlWithWindowsNewlinesInsideElement,compactHtml);
+         Test(htmlWithUnixNewlinesInsideTag,compactHtml);
+         Test(htmlWithWindowsNewlinesInsideTag,compactHtml);
+      }
+
+
    }
 }
