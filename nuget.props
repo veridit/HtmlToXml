@@ -18,7 +18,7 @@ Practical when processing html using `System.xml`.</Description>
     <!-- The SPDX name for the source license. See https://spdx.org/licenses/. -->
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <!-- Set all different possible dotnet version in one fell swoop https://stackoverflow.com/a/42183301 -->
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
