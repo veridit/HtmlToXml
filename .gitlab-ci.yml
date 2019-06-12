@@ -1,0 +1,13 @@
+image: microsoft/dotnet:latest
+
+nuget_package_upload:
+  script:
+    - "rm -f ./nupkg/HtmlToXml*"
+    - "cd HtmlToXml"
+    - "dotnet pack"
+    - "cd .."
+    - "cd NuGetTool"
+    - "dotnet pack"
+    - "cd .."
+    - "dotnet nuget push ./nupkg/HtmlToXmlLibrary.*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_API_KEY}"
+    - "dotnet nuget push ./nupkg/HtmlToXmlNuGetTool.*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_API_KEY}"
