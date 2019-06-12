@@ -15,6 +15,7 @@
          as a library.
     -->
     <PackageId>HtmlToXmlNuGetTool</PackageId>
+    <Product>dotnet tool for converting html to xml.</Product>
   </PropertyGroup>
 
   <ItemGroup>

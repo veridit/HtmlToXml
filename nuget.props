@@ -1,5 +1,9 @@
 <Project>
   <PropertyGroup>
+    <Company>Veridit as</Company>
+    <Authors>John Cardinal</Authors>
+    <Description>Convert Html to valid xml.
+Practical when processing html using `System.xml`.</Description>
     <!--
     // If upstream is not interested in maintaining the package, host on
     // gitlab instead to get package deployment on push.

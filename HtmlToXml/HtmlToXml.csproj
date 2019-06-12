@@ -13,6 +13,7 @@
 
   <PropertyGroup>
     <PackageId>HtmlToXmlLibrary</PackageId>
+    <Product>Library for converting html to xml.</Product>
   </PropertyGroup>
 
 </Project>
